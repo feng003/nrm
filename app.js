@@ -25,8 +25,9 @@ const rest = require('./rest');
 const cryptoFun = require('./config/cryptoFun');
 
 let
-    Pet  = model.Pet,
-    User = model.User;
+    UserAuth  = model.UserAuth,
+    User      = model.User,
+    Message   = model.Message;
 
 //(async () => {
     //var user = await User.create({
@@ -58,8 +59,9 @@ app.use(async (ctx, next) => {
 
 //注意顺序问题  parse request body:
 app.use(bodyParser());
+
 // static file support:
-const isProduct = process.env.NODE_ENV === 'production';
+const isProduct = process.env.NODE_EV === 'production';
 if (! isProduct) {
     let staticFiles = require('./static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));

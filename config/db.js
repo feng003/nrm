@@ -10,7 +10,7 @@ const uuid = require('node-uuid');
 
 const config = require('./config');
 
-//console.log('init sequelize...');
+console.log('init sequelize...');
 
 function generateId() {
     return uuid.v4();
