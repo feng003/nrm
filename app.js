@@ -67,6 +67,7 @@ app.use(async (ctx, next) => {
 
         logUtil.logError(ctx,error,execTime);
     }
+
     ctx.response.set('X-Response-Time', `${execTime}ms`);
 });
 

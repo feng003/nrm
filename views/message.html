@@ -14,15 +14,15 @@
             </form>
         </div>
         <div class="ant-col-12 demo-col demo-col-1">
-            <ul>
-                {% for f in msg %}
-                <li>username: {{f.username}}</li>
-                <li>title:{{f.title}}</li>
-                <li>Email:{{f.email}}</li>
-                <li>context:{{f.context}}</li>
-                <li>操作： <a href="/deleteMessage/{{f.id}}">删除</a> <a href="/editMessage/{{f.id}}">编辑</a></li>
-                {% endfor %}
-            </ul>
+            {% for f in msg %}
+                <ul>
+                    <li>username: {{f.username}}</li>
+                    <li>title:{{f.title}}</li>
+                    <li>Email:{{f.email}}</li>
+                    <li>context:{{f.context}}</li>
+                    <li>操作： <a href="/deleteMessage/{{f.id}}">删除</a> <a href="/editMessage/{{f.id}}">编辑</a></li>
+                </ul>
+            {% endfor %}
         </div>
     </div>
 </div>
