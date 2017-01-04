@@ -2,6 +2,7 @@
  * Created by zhang on 2016/12/15.
  */
 "use strict";
+
 const path = require('path');
 const mime = require('mime');
 const fs = require('mz/fs');
