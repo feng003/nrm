@@ -24,6 +24,7 @@ function createEnv(path,opts)
 
 function templating(path,opts){
     var env = createEnv(path,opts);
+    //console.log(path + JSON.stringify(opts));
     return async(ctx,next) => {
         ctx.render = function(view,model){
             ctx.response.body = env.render(view,Object.assign({},ctx.state || {},model||{}));

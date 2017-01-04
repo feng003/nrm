@@ -35,7 +35,8 @@
     "antd":"2.5.2",
     "ws": "1.1.1",
     "socket.io":"1.7.2",
-    "underscore":"1.8.3"
+    "underscore":"1.8.3",
+    "log4js":"1.1.0"
   },
   "devDependencies": {
     "mocha": "3.0.2"
