@@ -42,7 +42,13 @@ var formatRes = function (ctx, resTime) {
     logText += "response status: " + ctx.status + "\n";
 
     //响应内容
-    logText += "response body: " + "\n" + JSON.stringify(ctx.body) + "\n";
+    var body = '';
+    if(typeof ctx.body === 'object'){
+        body = 'object';
+    }else{
+        body = JSON.stringify(ctx.body);
+    }
+    logText += "response body: " + "\n" + body + "\n";
 
     //响应日志结束
     logText += "*************** response log end ***************" + "\n";
