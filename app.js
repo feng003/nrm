@@ -5,24 +5,18 @@
 const Koa = require('koa');
 
 const app = new Koa();
-
-const webSocket = require('ws');
-
 const fs = require('fs');
 
+const webSocket = require('ws');
+const session = require('koa-session')
+const convert = require('koa-convert');
 //koa-bodyparser  解析原始request请求
 const bodyParser = require('koa-bodyparser');
 
 const model = require('./model');
-
 const controller = require('./controller');
-
 const templating = require('./templating');
-
 const rest = require('./rest');
-
-//加密函数
-const cryptoFun = require('./config/cryptoFun');
 
 let
     UserAuth  = model.UserAuth,
@@ -49,6 +43,7 @@ let
 //log工具
 const logUtil = require('./utils/log_util');
 
+app.use(convert(session(app)));
 //middleware
 app.use(async (ctx, next) => {
     //console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
