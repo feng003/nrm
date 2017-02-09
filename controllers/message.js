@@ -7,6 +7,11 @@
     var   Message = model.Message;
 
     var fn_message = async(ctx,next)=>{
+        if(ctx.session.username == '')
+        {
+            ctx.redirect('/admin');
+            ctx.status = 301;
+        }
         var data = await Message.findAll({order:[['username','DESC']]});
 
         var msg = [];

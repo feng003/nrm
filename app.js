@@ -8,7 +8,7 @@ const app = new Koa();
 const fs = require('fs');
 
 const webSocket = require('ws');
-const session = require('koa-session')
+const session = require('koa-session');
 const convert = require('koa-convert');
 //koa-bodyparser  解析原始request请求
 const bodyParser = require('koa-bodyparser');
@@ -43,6 +43,7 @@ let
 //log工具
 const logUtil = require('./utils/log_util');
 
+app.keys = ['some secret'];
 app.use(convert(session(app)));
 //middleware
 app.use(async (ctx, next) => {

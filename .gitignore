@@ -1,3 +1,7 @@
 /.idea
 /node_modules
 /logs
+public/shunhehui.log
+public/shunhehuiNew.log
+public/shunhehuiNew2.log
+public/sql.sql
