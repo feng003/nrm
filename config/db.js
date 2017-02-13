@@ -10,7 +10,7 @@ const uuid = require('node-uuid');
 
 const config = require('./config');
 
-console.log('init sequelize...');
+//console.log('init sequelize...');
 
 function generateId() {
     return uuid.v4();
@@ -23,7 +23,8 @@ var sequelize = new Sequelize(config.database,config.username,config.password,{
         max:5,
         min:0,
         idle:30000
-    }
+    },
+    benchmark:true
 });
 
 const ID_TYPE = Sequelize.STRING(50);

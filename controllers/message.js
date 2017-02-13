@@ -7,7 +7,8 @@
     var   Message = model.Message;
 
     var fn_message = async(ctx,next)=>{
-        if(ctx.session.username == '')
+        console.log(ctx.session.username);
+        if(ctx.session.username != 'admin')
         {
             ctx.redirect('/admin');
             ctx.status = 301;
@@ -46,7 +47,6 @@
     };
     var fn_deleteMessage = async(ctx,next)=>{
         var id = ctx.params.id;
-        //console.log(id);
         var　num = await Message.destroy({'where':{'id':id}});
         ctx.redirect('/message');
         ctx.status = 301;

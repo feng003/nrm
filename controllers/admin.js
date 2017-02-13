@@ -9,15 +9,18 @@ const User  = model.User;
 
 const fn_admin = async(ctx,next)=>{
     var admin = cryptoFun.cryptoMd5('admins');
+    console.log(ctx.session.username);
     ctx.render('admin.html',{
-        title:admin
+        title:admin,
+        'username':ctx.session.username
     });
 };
 
 const fn_logout = async(ctx,next)=>{
     ctx.session.username = null;
-    ctx.redirect('/admin');
-    ctx.status = 301;
+    console.log(ctx.session.username);
+    //ctx.redirect('/admin');
+    //ctx.status = 301;
 };
 
 const fn_doAdmin = async(ctx,next)=>{
@@ -26,8 +29,14 @@ const fn_doAdmin = async(ctx,next)=>{
         passwd   = ctx.request.body.pwd || "";
         passwd = cryptoFun.cryptoMd5(passwd);
     await User.findOne({'where':{'name':username,'passwd':passwd}}).then(function(msg){
-        data = msg.dataValues;
+        if(msg !== ''){
+            data = msg.dataValues;
+        }
+    }).catch(function(err){
+        data = err;
+        console.log(err);
     });
+
     if(data){
         ctx.session.username = data.name;
         ctx.redirect('/message');
