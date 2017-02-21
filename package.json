@@ -40,7 +40,6 @@
     "underscore": "1.8.3",
     "ws": "1.1.1",
     "ioredis":"3.0.0-0",
-    "underscore":"1.8.3",
     "bluebird":"3.4.7",
     "xml2js":"0.4.17",
     "jsdom":"9.11.0"
