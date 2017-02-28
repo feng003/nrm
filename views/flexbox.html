@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flexbox</title>
+    <style>
+        html,
+        body {
+            height: 100%; /*显式设置这，是很重要的*/
+        }
+
+        body {
+            display: flex; /*flex 超能力被激活了！ */
+            flex-direction: column; /*垂直而不是水平堆放弹性项目（主栏目和脚注元素）*/
+        }
+        header {
+            flex: 0 0 90px; /*不会放大或者收缩 - 只会固定在 90px 高度。*/
+            background-color: #e8e8e9;
+        }
+        main {
+            flex: 1 0 auto; /*填满剩余空间*/
+            padding: 10px;
+        }
+
+        aside {
+            /* ...  */
+            display: flex; /*现在也是一个弹性容器*/
+            flex-direction: column; /*垂直堆放图标*/
+
+            /*因为方向改变了，如下在垂直方向上起作用。*/
+            justify-content: space-around;
+
+            align-items: center; /*方向改变了！这条影响的是水平方向。将图标居中*/
+            background-color: #f2f2f2; /*让我变漂亮*/
+        }
+
+        aside i.fa {
+            font-size: 0.9em;  /*图标的字体大小*/
+        }
+
+        footer {
+            flex: 0 0 90px; /*不会放大或者收缩 - 只会固定在 90px 高度。*/
+            padding: 10px;
+            background-color: #e8e8e6;
+        }
+
+
+        /* 把父元素变成一个弹性容器*/
+        ul {
+            border: 1px solid red;
+            padding: 0;
+            list-style: none;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+        li {
+            width:100px;
+            height: 100px;
+            background-color: #00d6b2;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    header
+</header>
+<main>
+    <aside> <!--这代表侧边栏，其中包含了来自 font-awesome 的图标集-->
+        <i class="fa fa-bars">1</i>
+        <i class="fa fa-home"></i>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-volume-up"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-spotify"></i>
+        <i class="fa fa-cog"></i>
+        <i class="fa fa-soundcloud"></i>
+    </aside>
+    <section class="content"> <!--这一部分会容纳除侧边栏以外的所有东西-->
+        123
+    </section>
+</main>
+<footer>
+    footer
+</footer>
+</body>
+</html>

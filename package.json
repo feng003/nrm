@@ -24,7 +24,7 @@
     "babel-polyfill": "6.13.0",
     "babel-preset-es2015-node6": "0.3.0",
     "babel-preset-stage-3": "6.5.0",
-    "koa": "2.0.0",
+    "koa": "2.0.1",
     "koa-bodyparser": "3.2.0",
     "koa-convert": "^1.2.0",
     "koa-router": "7.0.0",
@@ -38,9 +38,15 @@
     "sequelize": "3.24.1",
     "socket.io": "1.7.2",
     "underscore": "1.8.3",
-    "ws": "1.1.1"
+    "ws": "1.1.1",
+    "ioredis":"3.0.0-0",
+    "bluebird":"3.4.7",
+    "xml2js":"0.4.17",
+    "jsdom":"9.11.0"
   },
   "devDependencies": {
+    "request":"2.79.0",
+    "cheerio":"0.22.0",
     "mocha": "3.0.2"
   }
 }
