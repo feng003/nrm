@@ -12,6 +12,12 @@ var fn_index = async(ctx,next)=>{
     });
 };
 
+var fn_flexbox = async(ctx,next)=>{
+    ctx.render('flexbox.html',{
+        title:'welcome'
+    });
+};
+
 var fn_files = async(ctx,next)=>{
     var logName = __dirname + './../public/shunhehui.log';
     var logNew  = __dirname + './../public/shunhehuiNew.log';
@@ -90,6 +96,7 @@ var fn_signin = async(ctx,next)=>{
 
 module.exports = {
     'GET /':fn_index,
+    'GET /flexbox':fn_flexbox,
     'GET /files':fn_files,
     'POST /signin':fn_signin
 };

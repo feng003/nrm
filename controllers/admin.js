@@ -9,10 +9,10 @@ const User  = model.User;
 
 const fn_admin = async(ctx,next)=>{
     var admin = cryptoFun.cryptoMd5('admins');
-    console.log(ctx.session.username);
+    //console.log(ctx.session.username);
     ctx.render('admin.html',{
         title:admin,
-        'username':ctx.session.username
+        //'username':ctx.session.username
     });
 };
 

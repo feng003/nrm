@@ -42,7 +42,7 @@ let
 //log工具
 const logUtil = require('./utils/log_util');
 
-app.use(session());
+//app.use(session());
 //middleware
 app.use(async (ctx, next) => {
     //console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
@@ -52,13 +52,10 @@ app.use(async (ctx, next) => {
     try{
         //开始进入到下一个中间件
         await next();
-
         execTime = new Date().getTime() - start;
-
         logUtil.logResponse(ctx,execTime);
     } catch(error){
         execTime = new Date().getTime() - start;
-
         logUtil.logError(ctx,error,execTime);
     }
 
@@ -86,9 +83,7 @@ app.use(rest.restify());
 app.use(controller());
 
 let server = app.listen(3300);
-
 const webSocketServer = webSocket.Server;
-
 const wss = new webSocketServer({
     server: server
 });
