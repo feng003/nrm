@@ -2,7 +2,8 @@
  * Created by zhang on 2016/12/13.
  */
 "use strict";
-const fs = require('fs');
+const fs = require('fs'),
+    fileList = [];
 
 function addMapping(router,mapping)
 {
@@ -27,16 +28,36 @@ function addMapping(router,mapping)
 
 function addControllers(router)
 {
-    var files = fs.readdirSync(__dirname+'/controllers');
+    // var files = fs.readdirSync(__dirname+'/controllers');
+    var files = walk(__dirname+'/controllers');
     var js_files = files.filter((f)=>{
         return f.endsWith('.js');
     });
 
     for(var f of js_files){
-        //console.log(`process controller: ${f}...`);
+        // console.log(`process controller: ${f}...`);
         let mapping = require(__dirname + '/controllers/' +f );
         addMapping(router,mapping);
     }
+}
+/**
+ * 遍历文件夹
+ * @param path 文件路径
+ * @param dir  二级目录名称
+ * @returns {Array}
+ */
+function walk(path,dir=""){
+    let dirList = fs.readdirSync(path);
+    dirList.forEach(function(item){
+        let newDir = dir ? dir+"/"+item : item;
+        if(fs.statSync(path + '/' + item).isFile()){
+            fileList.push(newDir);
+        }else if(fs.statSync(path + '/' + item).isDirectory()){
+            walk(path + '/' + item,item);
+        }
+    });
+
+    return fileList;
 }
 
 //一个模块可以通过module.exports或exports将函数、变量等导出，以使其它JavaScript脚本通过require()函数引入并使用。

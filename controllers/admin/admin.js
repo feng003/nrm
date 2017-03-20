@@ -3,8 +3,9 @@
  */
 
 //加密函数
-const cryptoFun = require('../config/cryptoFun');
-const model = require('../model');
+const ROOT_PATH = process.cwd();
+const cryptoFun = require(ROOT_PATH +'/config/cryptoFun');
+const model = require(ROOT_PATH +'/model');
 const User  = model.User;
 
 const fn_admin = async(ctx,next)=>{

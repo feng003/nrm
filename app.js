@@ -12,10 +12,10 @@ const session   = require('koa-session2');
 //koa-bodyparser  解析原始request请求
 const bodyParser = require('koa-bodyparser');
 
-const model = require('./model');
-const controller = require('./controller');
-const templating = require('./templating');
-const rest = require('./rest');
+const model         = require('./model');
+const controller    = require('./controller');
+const templating    = require('./templating');
+const rest          = require('./rest');
 
 let
     UserAuth  = model.UserAuth,
@@ -44,7 +44,7 @@ const logUtil = require('./utils/log_util');
 
 //app.use(session());
 //middleware
-app.use(async (ctx, next) => {
+app.use(async (ctx,next) => {
     //console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
     var
         start = new Date().getTime(),

@@ -19,7 +19,7 @@
     "url": "https://github.com/feng003/forXB.git"
   },
   "dependencies": {
-    "antd": "2.5.2",
+    "antd": "2.x",
     "babel-core": "6.13.2",
     "babel-polyfill": "6.13.0",
     "babel-preset-es2015-node6": "0.3.0",
@@ -34,7 +34,7 @@
     "mysql": "2.11.1",
     "mz": "2.4.0",
     "node-uuid": "1.4.7",
-    "nunjucks": "2.4.2",
+    "nunjucks": "2.4.3",
     "sequelize": "3.24.1",
     "socket.io": "1.7.2",
     "underscore": "1.8.3",
