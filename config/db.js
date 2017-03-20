@@ -6,7 +6,7 @@
 
 const Sequelize = require('sequelize');
 
-const uuid = require('node-uuid');
+const uuid = require('uuid');
 
 const config = require('./config');
 
