@@ -2,9 +2,9 @@
  * Created by zhang on 2016/12/20.
  */
 
-const products = require('../config/products');
+const products = require(process.cwd() + '/config/products');
 
-const APIError = require('../rest').APIError;
+const APIError = require(process.cwd() + '/rest').APIError;
 
 module.exports = {
     'GET /api/products': async (ctx, next) => {

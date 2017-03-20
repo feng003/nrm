@@ -3,7 +3,7 @@
  */
 
     const url   = require('url');
-    const model = require('../model');
+    const model = require(process.cwd() + '/model');
     var   Message = model.Message;
 
     var fn_message = async(ctx,next)=>{

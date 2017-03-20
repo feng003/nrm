@@ -13,7 +13,7 @@ var fn_hello = async(ctx,next)=>{
 };
 
 var fn_danmu = async(ctx,next)=>{
-    var config = JSON.parse(fs.readFileSync(__dirname + './../public/config.json'));
+    var config = JSON.parse(fs.readFileSync(process.cwd() + '/public/config.json'));
 
     //fs.watchFile('../txt.txt',function(err){
     //    if(err) throw err;
