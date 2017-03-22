@@ -19,11 +19,6 @@
     "url": "https://github.com/feng003/nrm.git"
   },
   "dependencies": {
-    "antd": "2.x",
-    "babel-core": "6.13.2",
-    "babel-polyfill": "6.13.0",
-    "babel-preset-es2015-node6": "0.3.0",
-    "babel-preset-stage-3": "6.5.0",
     "koa": "2.0.1",
     "koa-bodyparser": "3.2.0",
     "koa-convert": "^1.2.0",
@@ -45,6 +40,10 @@
     "jsdom":"9.11.0"
   },
   "devDependencies": {
+    "babel-core": "6.13.2",
+    "babel-polyfill": "6.13.0",
+    "babel-preset-es2015-node6": "0.3.0",
+    "babel-preset-stage-3": "6.5.0",
     "request":"2.79.0",
     "cheerio":"0.22.0",
     "mocha": "3.0.2"
