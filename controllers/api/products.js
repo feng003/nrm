@@ -2,7 +2,7 @@
  * Created by zhang on 2016/12/20.
  */
 
-const products = require(process.cwd() + '/config/products');
+const products = require(process.cwd() + '/config/products-config');
 
 const APIError = require(process.cwd() + '/rest').APIError;
 

@@ -124,6 +124,4 @@ for (let type of TYPES) {
 exp.ID = ID_TYPE;
 exp.generateId = generateId;
 
-//console.log(exp);
-
 module.exports = exp;

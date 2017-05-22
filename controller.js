@@ -50,10 +50,11 @@ function walk(path,dir=""){
     let dirList = fs.readdirSync(path);
     dirList.forEach(function(item){
         let newDir = dir ? dir+"/"+item : item;
-        if(fs.statSync(path + '/' + item).isFile()){
+        let pathItem = path + '/' + item;
+        if(fs.statSync(pathItem).isFile()){
             fileList.push(newDir);
-        }else if(fs.statSync(path + '/' + item).isDirectory()){
-            walk(path + '/' + item,item);
+        }else if(fs.statSync(pathItem).isDirectory()){
+            walk(pathItem,item);
         }
     });
 
