@@ -6,9 +6,7 @@ const Koa = require('koa');
 const app = new Koa();
 const fs = require('fs');
 
-const webSocket = require('ws');
 const session   = require('koa-session2');
-//const convert = require('koa-convert');
 //koa-bodyparser  解析原始request请求
 const bodyParser = require('koa-bodyparser');
 
@@ -83,6 +81,9 @@ app.use(rest.restify());
 app.use(controller());
 
 let server = app.listen(3300);
+
+const webSocket = require('ws');
+
 const webSocketServer = webSocket.Server;
 const wss = new webSocketServer({
     server: server
