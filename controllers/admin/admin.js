@@ -5,7 +5,7 @@
 //加密函数
 const ROOT_PATH = process.cwd();
 const cryptoFun = require(ROOT_PATH +'/config/cryptoFun');
-const model = require(ROOT_PATH +'/model');
+const model = require(ROOT_PATH +'/lib/model');
 const User  = model.User;
 
 const fn_admin = async(ctx,next)=>{

@@ -4,7 +4,7 @@
 
 const products = require(process.cwd() + '/config/products-config');
 
-const APIError = require(process.cwd() + '/rest').APIError;
+const APIError = require(process.cwd() + '/lib/rest').APIError;
 
 module.exports = {
     'GET /api/products': async (ctx, next) => {

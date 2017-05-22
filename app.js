@@ -12,10 +12,10 @@ const session   = require('koa-session2');
 //koa-bodyparser  解析原始request请求
 const bodyParser = require('koa-bodyparser');
 
-const model         = require('./model');
-const controller    = require('./controller');
-const templating    = require('./templating');
-const rest          = require('./rest');
+const model         = require('./lib/model');
+const controller    = require('./lib/controller');
+const templating    = require('./lib/templating');
+const rest          = require('./lib/rest');
 
 let
     UserAuth  = model.UserAuth,
@@ -68,7 +68,7 @@ app.use(bodyParser());
 // static file support:
 const isProduct = process.env.NODE_EV === 'production';
 if (! isProduct) {
-    let staticFiles = require('./static-files');
+    let staticFiles = require('./lib/static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));
 }
 // add nunjucks as view:

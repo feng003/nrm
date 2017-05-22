@@ -3,4 +3,4 @@
  */
 
 
-const APIError = require(process.cwd() + '/rest').APIError;
+const APIError = require(process.cwd() + '/lib/rest').APIError;
