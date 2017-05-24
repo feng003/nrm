@@ -155,11 +155,59 @@
         
 > demo7 creating, updating and destroying multiple rows at once
 
+        Model.bulkCreate([{},{}]).then(()=>{return Model.findAll()}).then();
+        Model.update
+        Model.destroy
+
 5. 批量操作
 
-6. 关系
+6. 关系(Associations)
 
-7. 事务
+> demo1 1对1  
+
+
+        const Player = this.sequelize.define('player', {/* attributes */});
+        const Team  = this.sequelize.define('team', {/* attributes */});
+      BelongsTo
+        Player.belongsTo(Team)
+
+        const User = sequelize.define('user', {/* ... */})
+        const Project = sequelize.define('project', {/* ... */})
+      HasOne
+        Project.hasOne(User)
+
+> demo2 1对多
+
+
+      hasMany
+        Project.hasMany(User,{as,'Workers'})
+
+      belongsToMany
+        Project.belongsToMany(User,{through:'UserProject'})
+
+
+[Associations](http://docs.sequelizejs.com/manual/tutorial/associations.html)
+
+
+7. 事务(Transactions)
+
+> Managed transaction(auto-callback)
+
+      return sequelize.transaction(function(t){
+        return User.create({
+
+        },{transaction:t}).then(function(user){
+          return user.setShooter({},{transaction:t});
+        });
+      }).then(function(result){
+
+      }).catch(function(err){
+
+      })
+
+> Concurrent/Partial transactions
+
+    
 
 8. 其他
 

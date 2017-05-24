@@ -15,27 +15,9 @@ const controller    = require('./lib/controller');
 const templating    = require('./lib/templating');
 const rest          = require('./lib/rest');
 
-let
-    UserAuth  = model.UserAuth,
-    User      = model.User,
-    Message   = model.Message;
-
-//(async () => {
-    //var user = await User.create({
-    //    name: 'John',
-    //    gender: false,
-    //    email: 'john-' + Date.now() + '@garfield.pet',
-    //    passwd: 'hahaha'
-    //});
-    //console.log('created: ' + JSON.stringify(user));
-    //var cat = await Pet.create({
-    //    ownerId: user.id,
-    //    name: 'Garfield',
-    //    gender: false,
-    //    birth: '2007-07-07',
-    //});
-    //console.log('created: ' + JSON.stringify(cat));
-//})();
+//seed
+const seed          = require('./middleware/seed');
+app.use(seed.seed());
 
 //log工具
 const logUtil = require('./utils/log_util');
