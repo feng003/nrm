@@ -6,8 +6,8 @@ require('babel-core/register')({
     presets: ['stage-3']
 });
 
-const model = require('../lib/model.js');
+const model = require(process.cwd() + '/lib/model');
 model.sync();
 
 console.log('init db ok.');
-process.exit(0);
+// process.exit(0);

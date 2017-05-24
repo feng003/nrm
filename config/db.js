@@ -31,6 +31,11 @@ const ID_TYPE = Sequelize.STRING(50);
 
 function defineModel(name, attributes) {
     var attrs = {};
+      
+    attrs.id = {
+        type: ID_TYPE,
+        primaryKey: true
+    };
     for (let key in attributes) {
         let value = attributes[key];
         if (typeof value === 'object' && value['type']) {
@@ -43,10 +48,6 @@ function defineModel(name, attributes) {
             };
         }
     }
-    attrs.id = {
-        type: ID_TYPE,
-        primaryKey: true
-    };
     attrs.createdAt = {
         type: Sequelize.BIGINT,
         allowNull: false
@@ -103,7 +104,7 @@ function defineModel(name, attributes) {
     });
 }
 
-const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN'];
+const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN','DECIMAL'];
 
 var exp = {
     defineModel: defineModel,

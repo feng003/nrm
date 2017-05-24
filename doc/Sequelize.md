@@ -241,7 +241,7 @@
           ]
         })
 
-[官方文档](http://docs.sequelizejs.com/en/v3/docs/getting-started/)
+[官方文档](http://docs.sequelizejs.com/)
 
 [参考资料](https://segmentfault.com/a/1190000003987871#articleHeader2)
 

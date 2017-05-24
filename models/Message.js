@@ -4,7 +4,7 @@
 
 const db = require('../config/db');
 
-module.exports = db.defineModel('messages', {
+ const messages = db.defineModel('messages', {
     email: {
         type: db.STRING(100),
         unique: true
@@ -13,3 +13,18 @@ module.exports = db.defineModel('messages', {
     title: db.STRING(100),
     context: db.TEXT
 });
+
+
+
+const findByName = function()
+{
+    console.log('123');
+}
+
+module.exports = {
+    messages:messages,
+    findByName:findByName
+};
+
+
+

@@ -7,7 +7,7 @@
     var   Message = model.Message;
 
     var fn_message = async(ctx,next)=>{
-        console.log(ctx.session.username);
+        // console.log(ctx.session.username);
         if(ctx.session.username != 'admin')
         {
             ctx.redirect('/admin');
