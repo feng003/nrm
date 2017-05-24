@@ -17,7 +17,7 @@ const rest          = require('./lib/rest');
 
 //seed
 const seed          = require('./middleware/seed');
-app.use(seed.seed());
+// app.use(seed.seed());
 
 //log工具
 const logUtil = require('./utils/log_util');
