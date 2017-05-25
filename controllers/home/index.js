@@ -14,7 +14,13 @@ var fn_index = async(ctx,next)=>{
 
 var fn_flexbox = async(ctx,next)=>{
     ctx.render('flexbox.html',{
-        title:'welcome'
+        title:'flexbox'
+    });
+};
+
+var fn_socket = async(ctx,next)=>{
+    ctx.render('socket.html',{
+        title:'socket'
     });
 };
 
@@ -97,6 +103,7 @@ var fn_signin = async(ctx,next)=>{
 module.exports = {
     'GET /':fn_index,
     'GET /flexbox':fn_flexbox,
+    'GET /socket':fn_socket,
     'GET /files':fn_files,
     'POST /signin':fn_signin
 };

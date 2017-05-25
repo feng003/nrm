@@ -64,28 +64,31 @@ app.use(controller());
 
 let server = app.listen(3300);
 
-const webSocket = require('ws');
+var chatServer = require('./lib/chat_server');
+chatServer.listen(server);
 
-const webSocketServer = webSocket.Server;
-const wss = new webSocketServer({
-    server: server
-});
+// const webSocket = require('ws');
 
-wss.on('connection',function(ws){
-    ws.on('message',function(message){
-        //console.log(`[SERVER] Received: ${message}`);
-        ws.send(`${message}`,(err)=>{
-            if(err){
-                console.log(`[SERVER] error: ${err}`);
-            }
-            var messFile = __dirname + "/txt.txt";
-            //追加写入操作
-            fs.appendFile(messFile,message,(err)=>{
-                if(err) throw err;
-                console.log('saved');
-            })
-        })
-    })
-});
+// const webSocketServer = webSocket.Server;
+// const wss = new webSocketServer({
+//     server: server
+// });
+
+// wss.on('connection',function(ws){
+//     ws.on('message',function(message){
+//         //console.log(`[SERVER] Received: ${message}`);
+//         ws.send(`${message}`,(err)=>{
+//             if(err){
+//                 console.log(`[SERVER] error: ${err}`);
+//             }
+//             var messFile = __dirname + "/txt.txt";
+//             //追加写入操作
+//             fs.appendFile(messFile,message,(err)=>{
+//                 if(err) throw err;
+//                 console.log('saved');
+//             })
+//         })
+//     })
+// });
 
 console.log('app started at port 3300');
