@@ -52,7 +52,7 @@ if (! isProduct) {
     app.use(staticFiles('/static/', __dirname + '/static'));
 }
 // add nunjucks as view:
-app.use(templating('views',{
+app.use(templating('/views',{
     noCache:!isProduct,
     watch:!isProduct
 }));
