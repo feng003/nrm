@@ -12,38 +12,25 @@ const bodyParser = require('koa-bodyparser');
 
 const model         = require('./lib/model');
 const controller    = require('./lib/controller');
-const templating    = require('./lib/templating');
 const rest          = require('./lib/rest');
+const catalog       = require('./middleware/catalog');
+const log           = require('./middleware/log');
+
+//middleware
 
 //seed
-const seed          = require('./middleware/seed');
+// const seed          = require('./middleware/seed');
 // app.use(seed.seed());
 
-//log工具
-const logUtil = require('./utils/log_util');
-
 //app.use(session());
-//middleware
-app.use(async (ctx,next) => {
-    //console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
-    var
-        start = new Date().getTime(),
-        execTime;
-    try{
-        //开始进入到下一个中间件
-        await next();
-        execTime = new Date().getTime() - start;
-        logUtil.logResponse(ctx,execTime);
-    } catch(error){
-        execTime = new Date().getTime() - start;
-        logUtil.logError(ctx,error,execTime);
-    }
 
-    ctx.response.set('X-Response-Time', `${execTime}ms`);
-});
+app.use(log());
 
 //注意顺序问题  parse request body:
 app.use(bodyParser());
+
+//catalog
+app.use(catalog());
 
 // static file support:
 const isProduct = process.env.NODE_EV === 'production';
@@ -51,14 +38,10 @@ if (! isProduct) {
     let staticFiles = require('./lib/static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));
 }
-// add nunjucks as view:
-app.use(templating('/views',{
-    noCache:!isProduct,
-    watch:!isProduct
-}));
 
 // bind .rest() for ctx:
 app.use(rest.restify());
+
 // add controllers:
 app.use(controller());
 

@@ -3,10 +3,12 @@
  */
 
 var readline = require('readline');
-var fs = require('fs');
+var fs       = require('fs');
 var stream   = require('stream');
 
 var fn_index = async(ctx,next)=>{
+    // ctx.response.body = 'test';
+    console.log(ctx.render);
     ctx.render('index.html',{
         title:'welcome'
     });

@@ -5,7 +5,7 @@ let
     UserAuth  = model.userAuth,
     User      = model.user,
     Message   = model.message;
-console.log(Message);
+
 const seed = ()=>{
     return async (ctx,next) => {
         var user = await User.create({
