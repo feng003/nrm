@@ -90,7 +90,6 @@ var fn_files = async(ctx,next)=>{
 var fn_signin = async(ctx,next)=>{
     var name = ctx.request.body.name || "",
         pwd = ctx.request.body.pwd || "";
-    console.log("name:"+name+", pwd:"+pwd);
     if(name =='koa' && pwd === '123456')
     {
         ctx.response.body = `<h2>welcome ${name} !</h2>`
