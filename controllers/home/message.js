@@ -4,23 +4,24 @@
 
     const url   = require('url');
     const model = require(process.cwd() + '/lib/model');
-    var   Message = model.Message;
+    var   Message = model.message;
 
     var fn_message = async(ctx,next)=>{
-        // console.log(ctx.session.username);
+        console.log(ctx.session.username);
         // if(ctx.session.username != 'admin')
         // {
         //     ctx.redirect('/home');
         //     ctx.status = 301;
         // }
+        console.log(Message);
         var data = await Message.findAll({order:[['username','DESC']]});
 
         var msg = [];
         for(var v in data){
             msg[v] = data[v]['dataValues'];
-            //console.log(msg);
+            // console.log(msg);
         }
-        //console.log('message '+ JSON.stringify(ctx.response));
+        console.log('message '+ JSON.stringify(ctx.response));
         ctx.render('message.html',{'title':'message','msg':msg});
     };
 
@@ -41,14 +42,14 @@
         }).catch(function(err){
             console.log('failed: '+ err);
         });
-        ctx.redirect('/message');
+        ctx.redirect('/home/message');
         ctx.status = 301;
         //await next();
     };
     var fn_deleteMessage = async(ctx,next)=>{
         var id = ctx.params.id;
         var　num = await Message.destroy({'where':{'id':id}});
-        ctx.redirect('/message');
+        ctx.redirect('/home/message');
         ctx.status = 301;
     };
 
@@ -74,7 +75,7 @@
                 }).catch(function(err){
                     console.log(err);
                 });
-        ctx.redirect('/message');
+        ctx.redirect('/home/message');
         ctx.status = 301;
     };
 
