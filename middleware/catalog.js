@@ -36,7 +36,7 @@ function templating(ctx)
 
         const isProduct = process.env.NODE_EV === 'production';
         var opts = {noCache:!isProduct,watch:!isProduct};
-        // console.log(path + JSON.stringify(opts));
+        console.log(path + JSON.stringify(opts));
         var env  = createEnv(path,opts);
         return function(){
             ctx.render = function(view,model){

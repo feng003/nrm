@@ -1,9 +1,7 @@
 var Login = function () {
-    
     return {
         //main function to initiate the module
         init: function () {
-        	
            $('.login-form').validate({
 	            errorElement: 'label', //default input error message container
 	            errorClass: 'help-inline', // default input error message class
@@ -22,10 +20,10 @@ var Login = function () {
 
 	            messages: {
 	                username: {
-	                    required: "Username is required."
+	                    required: "请输入用户名."
 	                },
 	                password: {
-	                    required: "Password is required."
+	                    required: "请输入密码."
 	                }
 	            },
 
@@ -47,19 +45,19 @@ var Login = function () {
 	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
+	            // submitHandler: function (form) {
+	            //     window.location.href = "index.html";
+	            // }
 	        });
 
-	        $('.login-form input').keypress(function (e) {
-	            if (e.which == 13) {
-	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
-	                }
-	                return false;
-	            }
-	        });
+	        // $('.login-form input').keypress(function (e) {
+	        //     if (e.which == 13) {
+	        //         if ($('.login-form').validate().form()) {
+	        //             window.location.href = "/admin/doAdmin";
+	        //         }
+	        //         return false;
+	        //     }
+	        // });
 
 	        $('.forget-form').validate({
 	            errorElement: 'label', //default input error message container
@@ -72,22 +70,18 @@ var Login = function () {
 	                    email: true
 	                }
 	            },
-
 	            messages: {
 	                email: {
 	                    required: "Email is required."
 	                }
 	            },
-
 	            invalidHandler: function (event, validator) { //display error alert on form submit   
 
 	            },
-
 	            highlight: function (element) { // hightlight error inputs
 	                $(element)
 	                    .closest('.control-group').addClass('error'); // set error class to the control group
 	            },
-
 	            success: function (label) {
 	                label.closest('.control-group').removeClass('error');
 	                label.remove();
@@ -97,19 +91,19 @@ var Login = function () {
 	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
+	            // submitHandler: function (form) {
+	            //     window.location.href = "index.html";
+	            // }
 	        });
 
-	        $('.forget-form input').keypress(function (e) {
-	            if (e.which == 13) {
-	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "index.html";
-	                }
-	                return false;
-	            }
-	        });
+	        // $('.forget-form input').keypress(function (e) {
+	        //     if (e.which == 13) {
+	        //         if ($('.forget-form').validate().form()) {
+	        //             window.location.href = "index.html";
+	        //         }
+	        //         return false;
+	        //     }
+	        // });
 
 	        jQuery('#forget-password').click(function () {
 	            jQuery('.login-form').hide();
@@ -144,27 +138,22 @@ var Login = function () {
 	                    required: true
 	                }
 	            },
-
 	            messages: { // custom messages for radio buttons and checkboxes
 	                tnc: {
 	                    required: "Please accept TNC first."
 	                }
 	            },
-
 	            invalidHandler: function (event, validator) { //display error alert on form submit   
 
 	            },
-
 	            highlight: function (element) { // hightlight error inputs
 	                $(element)
 	                    .closest('.control-group').addClass('error'); // set error class to the control group
 	            },
-
 	            success: function (label) {
 	                label.closest('.control-group').removeClass('error');
 	                label.remove();
 	            },
-
 	            errorPlacement: function (error, element) {
 	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
 	                    error.addClass('help-small no-left-padding').insertAfter($('#register_tnc_error'));
@@ -172,23 +161,18 @@ var Login = function () {
 	                    error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	                }
 	            },
-
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
+	            // submitHandler: function (form) {
+	            //     window.location.href = "index.html";
+	            // }
 	        });
-
 	        jQuery('#register-btn').click(function () {
 	            jQuery('.login-form').hide();
 	            jQuery('.register-form').show();
 	        });
-
 	        jQuery('#register-back-btn').click(function () {
 	            jQuery('.login-form').show();
 	            jQuery('.register-form').hide();
 	        });
         }
-
     };
-
 }();
