@@ -8,11 +8,11 @@
 
     var fn_message = async(ctx,next)=>{
         // console.log(ctx.session.username);
-        if(ctx.session.username != 'admin')
-        {
-            ctx.redirect('/admin');
-            ctx.status = 301;
-        }
+        // if(ctx.session.username != 'admin')
+        // {
+        //     ctx.redirect('/home');
+        //     ctx.status = 301;
+        // }
         var data = await Message.findAll({order:[['username','DESC']]});
 
         var msg = [];
@@ -79,9 +79,9 @@
     };
 
     module.exports = {
-        'GET /message':fn_message,
-        'GET /deleteMessage/:id':fn_deleteMessage,
-        'GET /editMessage/:id':fn_editMessage,
-        'POST /addMessage':fn_addMessage,
-        'POST /editDoMessage':fn_editDoMessage
+        'GET /home/message':fn_message,
+        'GET /home/deleteMessage/:id':fn_deleteMessage,
+        'GET /home/editMessage/:id':fn_editMessage,
+        'POST /home/addMessage':fn_addMessage,
+        'POST /home/editDoMessage':fn_editDoMessage
     };

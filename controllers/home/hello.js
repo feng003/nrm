@@ -29,6 +29,6 @@ var fn_danmu = async(ctx,next)=>{
 };
 
 module.exports = {
-    'GET /hello/:name':fn_hello,
-    'GET /danmu':fn_danmu
+    'GET /home/hello/:name':fn_hello,
+    'GET /home/danmu':fn_danmu
 };

@@ -10,7 +10,8 @@ const User  = model.User;
 
 const fn_admin = async(ctx,next)=>{
     var admin = cryptoFun.cryptoMd5('admins');
-    //console.log(ctx.session.username);
+    ctx.session.username = admin;
+    console.log(ctx.session.username);
     ctx.render('admin.html',{
         title:admin,
         //'username':ctx.session.username
@@ -50,6 +51,6 @@ const fn_doAdmin = async(ctx,next)=>{
 
 module.exports = {
     'GET /admin':fn_admin,
-    'GET /logout':fn_logout,
-    'POST /doAdmin':fn_doAdmin
+    'GET /admin/logout':fn_logout,
+    'POST /admin/doAdmin':fn_doAdmin
 };

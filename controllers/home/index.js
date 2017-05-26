@@ -102,9 +102,9 @@ var fn_signin = async(ctx,next)=>{
 };
 
 module.exports = {
-    'GET /':fn_index,
-    'GET /flexbox':fn_flexbox,
-    'GET /socket':fn_socket,
-    'GET /files':fn_files,
-    'POST /signin':fn_signin
+    'GET /home':fn_index,
+    'GET /home/flexbox':fn_flexbox,
+    'GET /home/socket':fn_socket,
+    'GET /home/files':fn_files,
+    'POST /home/signin':fn_signin
 };
