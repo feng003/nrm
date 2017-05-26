@@ -20,15 +20,17 @@ function createEnv(path,opts)
     return env;
 }
 
-function templating(ctx)
-{
-        var url  = ctx.url;
-        var path = '';
-        var urlArr = url.split('/');
-        if(urlArr[1] === 'admin')
+// add nunjucks as view:
+const catalog = () =>{
+    return async (ctx,next)=>{
+
+        var url  = ctx.url,
+            path = '';
+        var urlStr = url.split('/')[1];
+        if(urlStr === 'admin')
         {
             path = '/views/admin';
-        }else if(urlArr[1] === 'home'){
+        }else if(urlStr === 'home'){
             path = '/views/home';
         }else{
             path = '/views';
@@ -36,22 +38,16 @@ function templating(ctx)
 
         const isProduct = process.env.NODE_EV === 'production';
         var opts = {noCache:!isProduct,watch:!isProduct};
-        console.log(path + JSON.stringify(opts));
+        // console.log(path + JSON.stringify(opts));
         var env  = createEnv(path,opts);
-        return function(){
+        // (function(){
             ctx.render = function(view,model){
                 ctx.response.body = env.render(view,Object.assign({},ctx.state || {},model||{}));
                 ctx.response.type = 'text/html';
             };
-        }();
-}
+        // }());
 
-// add nunjucks as view:
-const catalog = () =>{
-    return async (ctx,next)=>{
-         templating(ctx);
-
-         await next();
+        await next();
     }
 }
 
