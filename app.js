@@ -13,7 +13,7 @@ const bodyParser = require('koa-bodyparser');
 const model         = require('./lib/model');
 const controller    = require('./lib/controller');
 const rest          = require('./lib/rest');
-const Store         = require("./lib/Store");
+const Store         = require("./lib/store");
 
 const catalog       = require('./middleware/catalog');
 const log           = require('./middleware/log');
