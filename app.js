@@ -5,6 +5,7 @@
 const Koa = require('koa');
 const app = new Koa();
 const fs = require('fs');
+const restc = require('restc');
 
 const session   = require('koa-session2');
 //koa-bodyparser  解析原始request请求
@@ -13,12 +14,15 @@ const bodyParser = require('koa-bodyparser');
 const model         = require('./lib/model');
 const controller    = require('./lib/controller');
 const rest          = require('./lib/rest');
-const Store         = require("./lib/store");
+const Store         = require("./lib/redisStore");
 
 const catalog       = require('./middleware/catalog');
 const log           = require('./middleware/log');
 
 //middleware
+
+// use restc middleware
+// app.use(restc.koa2());
 
 //seed
 // const seed          = require('./middleware/seed');
@@ -41,7 +45,7 @@ if (! isProduct) {
 }
 
 app.use(session({
-    store: new Store()
+    key: "SESSIONID",   //default "koa:sess"
 }));
 
 // bind .rest() for ctx:

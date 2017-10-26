@@ -1,4 +1,4 @@
-
+//
 const model         = require('../lib/model');
 
 let
@@ -18,8 +18,8 @@ const seed = ()=>{
 
         await next();
     }
-}
+};
 
 module.exports = {
     seed:seed
-}
+};
