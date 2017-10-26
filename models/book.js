@@ -32,7 +32,6 @@ const createBook = async function (data) {
         author: data.author,
         isbn13:data.isbn13
     });
-    return true
 };
 
 module.exports = {

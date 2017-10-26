@@ -1,6 +1,6 @@
 const request = require('request');
 const model = require(process.cwd() + '/lib/model');
-const Book = model.book;
+const Book  = model.book;
 
 const fn_index = async function(ctx,next){
         // 要访问的目标页面
@@ -12,7 +12,6 @@ const fn_index = async function(ctx,next){
         // 代理服务器
         const proxyHost = "http-dyn.abuyun.com";
         const proxyPort = 9020;
-
         // 代理隧道验证信息
         const proxyUser = "H2PZ63ER63M6ZG6D";
         const proxyPass = "F3DC5AA716CFE467";
@@ -25,27 +24,21 @@ const fn_index = async function(ctx,next){
             }
         };
 
-        console.log(proxiedRequest);
-
-        const rs = proxiedRequest.get(options, function (err, ctx, body) {
-            console.log(body);
+        proxiedRequest.get(options, function (err, ctx, body) {
             if(body !== undefined){
                 let obj = JSON.parse(body);
-                console.log("got response: "+obj);
                 if(obj.isbn13){
-                  const  result = Book.createBook(obj);
-                  console.log(result);
+                    //TODO await 一个 Promise 对象或者任何要等待的值
+                  // await Book.createBook(obj);
                 }else{
-                    console.log("error" + isbn);
+                  console.log("error" + isbn);
                 }
             }else{
                 console.log("error");
             }
         }).on("error", function (err) {
-                console.log(err);
+            console.log(err);
         });
-        console.log(rs);
-        await next();
 };
 
 module.exports={
