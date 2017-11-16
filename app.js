@@ -25,7 +25,7 @@ const log           = require('./middleware/log');
 // app.use(restc.koa2());
 
 //seed
-// const seed          = require('./middleware/seed');
+// const seed = require('./middleware/seed');
 // app.use(seed.seed());
 
 //log middleware

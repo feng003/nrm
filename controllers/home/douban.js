@@ -1,5 +1,6 @@
 const request = require('request');
 const model = require(process.cwd() + '/lib/model');
+const douban = require('../../middleware/douban');
 const Book  = model.book;
 
 const fn_index = async function(ctx,next){
@@ -41,6 +42,18 @@ const fn_index = async function(ctx,next){
         });
 };
 
+const fn_book = async function (ctx,next) {
+    let dou = new douban();
+    let isbn = '9787111428602';
+    try{
+        const book = await dou.getBook(isbn);
+        dou.saveBook(isbn,book);
+    }catch (err){
+        console.log(err);
+    }
+};
+
 module.exports={
-    'GET /home/douban':fn_index
+    'GET /home/douban':fn_index,
+    'GET /home/book':fn_book
 };
