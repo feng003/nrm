@@ -29,7 +29,7 @@ const log           = require('./middleware/log');
 // app.use(seed.seed());
 
 //log middleware
-app.use(log());
+// app.use(log());
 
 //注意顺序问题  parse request body:
 app.use(bodyParser());

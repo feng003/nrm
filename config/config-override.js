@@ -3,7 +3,8 @@
  */
 
 var config = {
-    database:'production',
+    dialect:'mysql',
+    database:'test',
     username:'root',
     password:'toor',
     host:'127.0.0.1',

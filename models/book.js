@@ -34,7 +34,13 @@ const createBook = async function (data) {
     });
 };
 
+const findLastBookIsbn = async function(){
+    let isbn = await book.find();
+    return isbn;
+};
+
 module.exports = {
     book:book,
-    createBook:createBook
+    createBook:createBook,
+    findLastBookIsbn:findLastBookIsbn
 };

@@ -1,15 +1,11 @@
 /**
  * Created by zhang on 2016/12/14.
  */
-
 "use strict";
 
-const Sequelize = require('sequelize');
-
 const uuid = require('uuid');
-
+const Sequelize = require('sequelize');
 const config = require('./config');
-
 //console.log('init sequelize...');
 
 function generateId() {
@@ -22,13 +18,13 @@ var sequelize = new Sequelize(config.database,config.username,config.password,{
     pool:{
         max:5,
         min:0,
-        idle:30000
+        acquire:30000,
+        idle:10000
     },
     benchmark:true
 });
-
+const Op = Sequelize.Op;
 const ID_TYPE = Sequelize.STRING(50);
-
 function defineModel(name, attributes) {
     var attrs = {};
       
@@ -103,7 +99,6 @@ function defineModel(name, attributes) {
         }
     });
 }
-
 const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN','DECIMAL'];
 
 var exp = {
@@ -121,7 +116,7 @@ var exp = {
 for (let type of TYPES) {
     exp[type] = Sequelize[type];
 }
-
+exp.Op = Op;
 exp.ID = ID_TYPE;
 exp.generateId = generateId;
 

@@ -1,14 +1,10 @@
 /**
  * Created by zhang on 2016/12/14.
  */
-
-const defaultConfig = './config-default.js';
-
-const overrideConfig = './config-override.js';
-
-const testConfig = './config-test.js';
-
 const fs = require('fs');
+const defaultConfig = './config-default.js';
+const overrideConfig = './config-override.js';
+const testConfig = './config-test.js';
 
 var config = null;
 if(process.env.NODE_ENV === 'test'){
