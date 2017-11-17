@@ -1,17 +1,16 @@
 /**
  * Created by zhang on 2016/12/30.
  */
-
     const url   = require('url');
     const model = require(process.cwd() + '/lib/model');
     var   Message = model.message;
 
     var fn_message = async(ctx,next)=>{
-        var data = await Message.findAll({order:[['username','DESC']]});
+
+        let data = await Message.findAll();
         var msg = [];
         for(var v in data){
             msg[v] = data[v]['dataValues'];
-            // console.log(msg);
         }
         console.log('message '+ JSON.stringify(ctx.response));
         ctx.render('message.html',{'title':'message','msg':msg});

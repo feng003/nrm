@@ -38,11 +38,7 @@
         return true
     };
 
-    module.exports = {
-        messages,
-        addMessages,
-        updateMessages
-    };
+    module.exports = messages;
 
 
 
