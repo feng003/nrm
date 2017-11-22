@@ -48,6 +48,26 @@ var responseLogPath = baseLogPath + responsePath + "/" + responseFileName;
 // };
 
 module.exports = {
-    appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
-    categories: { default: { appenders: ['cheese'], level: 'error' } }
+    appenders: {
+        "errorLogger": {
+            "type": 'dateFile',
+            "filename": errorLogPath,
+            "alwaysIncludePattern":true,          //是否总是有后缀名
+            "pattern": "-yyyy-MM-dd-hh.log",       //后缀，每小时创建一个新的日志文件
+            "path": errorPath
+        },
+        "resLogger":{
+            "type": "dateFile",
+            "filename": responseLogPath,
+            "alwaysIncludePattern":true,
+            "pattern": "-yyyy-MM-dd-hh.log",
+            "path": responsePath
+        }
+    },
+    categories: {
+        default: {
+            appenders: ['errorLogger','resLogger'],
+            level: 'error'
+        }
+    }
 };
