@@ -12,7 +12,6 @@
         for(var v in data){
             msg[v] = data[v]['dataValues'];
         }
-        console.log('message '+ JSON.stringify(ctx.response));
         ctx.render('message.html',{'title':'message','msg':msg});
     };
 
@@ -23,7 +22,15 @@
         data['context'] = ctx.request.body.title || "";
         data['email'] = ctx.request.body.email || "";
 
-        const rs = await Message.addMessages(data);
+        const rs = await Message.create({
+            id:data.id,
+            username:data['username'],
+            title:data['title'],
+            context:data['context'],
+            email:data['email']
+        },{'where':{id:data.id}});
+
+        console.log(rs);
         ctx.redirect('/home/message');
         ctx.status = 301;
     };
@@ -52,7 +59,14 @@
         data['context'] = ctx.request.body.context || "";
         data['email'] = ctx.request.body.email || "";
 
-        const rs = await Message.updateMessages(data);
+        const rs =  await Message.create({
+            id:data.id,
+            username:data['username'],
+            title:data['title'],
+            context:data['context'],
+            email:data['email']
+        },{'where':{id:data.id}});
+
         ctx.redirect('/home/message');
         ctx.status = 301;
     };

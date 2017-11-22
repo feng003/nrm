@@ -14,30 +14,6 @@
         context: db.TEXT
     });
 
-    const addMessages = async function(data){
-        await messages.create({
-            id:data.id,
-            username:data.username,
-            title:data.title,
-            context:data.context,
-            email:data.email
-        },{'where':{id:data.id}});
-
-        return true
-    };
-
-    const updateMessages = async function(data){
-        await messages.create({
-            id:data.id,
-            username:data.username,
-            title:data.title,
-            context:data.context,
-            email:data.email
-        },{'where':{id:data.id}});
-
-        return true
-    };
-
     module.exports = messages;
 
 
