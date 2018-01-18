@@ -1,4 +1,5 @@
 const douban = require('../../middleware/douban');
+
 const fn_index = async function(ctx,next){
 
     let dou = new douban();
@@ -17,13 +18,24 @@ const fn_index = async function(ctx,next){
 
 const fn_book = async function (ctx,next) {
     let dou = new douban();
-    let isbn = '9787510805083';
-    try{
-        const book = await dou.getBook(isbn);
-        dou.saveBookToFile(isbn,book);
-    }catch (err){
-        console.log(err);
+    let isbn = '9787000000001';
+    let success = [];
+    let error = [];
+    for(let i=0;i<10;i++){
+        isbn = parseInt(isbn) + i*10;
+        try{
+            const book = await dou.getBook(isbn);
+            if(book['isbn13']){
+                let obj = {'title':book.title,'isbn13':book.isbn13};
+                success.push(obj);
+            }else{
+                error.push(book);
+            }
+        }catch (err){
+            console.log(err);
+        }
     }
+    dou.saveBookToSql(success);
 };
 
 module.exports={

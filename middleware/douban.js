@@ -5,12 +5,12 @@ const fs = require('fs');
 const path = require('path');
 const request = require('request');
 const model = require(process.cwd() + '/lib/model');
-const Book  = model.book;
+const Book = model.book;
 
 class douban {
 
     constructor(){
-        console.log(Book);
+        // console.log(Book);
     }
 
     getBook(isbn){
@@ -49,14 +49,23 @@ class douban {
         return p;
     }
 
+    async findMaxIsbn(){
+        const rs = await Book.findOne({order:['isbn13','desc']});
+        return rs ;
+    }
+
     saveBookToFile(isbn,data){
         fs.writeFile(path.join('./logs',isbn+'.txt'), JSON.stringify(data),function (err) {
             if(err) throw  err;
         });
     }
 
-    saveBookToSql(isbn,data){
-
+    async saveBookToSql(data){
+        // console.log(data);
+        // fs.writeFile(path.join('./logs/1.txt'), JSON.stringify(data),function (err) {
+        //     if(err) throw err;
+        // });
+        await Book.create(data);
     }
 
     sleep(time){

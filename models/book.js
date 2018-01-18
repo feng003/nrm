@@ -39,8 +39,10 @@ const findLastBookIsbn = async function(){
     return isbn;
 };
 
-module.exports = {
-    book:book,
-    createBook:createBook,
-    findLastBookIsbn:findLastBookIsbn
-};
+module.exports = book;
+
+// module.exports = {
+//     book:book,
+//     createBook:createBook,
+//     findLastBookIsbn:findLastBookIsbn
+// };
